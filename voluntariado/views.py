@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .forms import FormVoluntario
 
 def inicio(request):
-    return HttpResponse("Hola mundo")
+    return render(request, "voluntariado/inicio.html")
 
 def nuevo_voluntario(request):
-    return render(request, "voluntariado/formVol.html")
+    if request.method == "POST":
+        ...
+
+    mi_form = FormVoluntario()
+    return render(request, "voluntariado/formVol.html", {"form":mi_form})

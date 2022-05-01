@@ -1,7 +1,13 @@
 {% extends "index.html" %}
 
-{% block contenido %}
 
-<h1>Voluntarios</h1>
+{% block contenido %}
+    <h1>Voluntarios</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Enviar">
+    </form>
 
 {% endblock contenido %}
