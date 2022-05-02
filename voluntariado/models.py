@@ -7,8 +7,13 @@ class Facilitador(models.Model):
     email = models.EmailField()
     presentacion = models.TextField()
 
+    class Meta:
+        verbose_name = "Facilitador"
+        verbose_name_plural = "Facilitadores"
+
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
 
 class Voluntario(models.Model):
     nombre = models.CharField(max_length=40)
