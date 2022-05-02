@@ -1,9 +1,29 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from escuela.models import Clase
+from .forms import FormClase
 
-def inicio(request):
-    return HttpResponse("Hola mundo")
+
+def inicio_escuela(request):
+    return render(request, "escuela/inicio.html")
+
+
+def nueva_clase(request):
+    if request.method == "POST":
+        mi_form = FormClase(request.POST)
+        if mi_form.is_valid():
+            info = mi_form.cleaned_data
+            clase = Clase(
+                titulo=info["titulo"],
+                tema=info["tema"],
+                contenido=info["contenido"],
+                fecha=info["fecha"],
+            )
+            clase.save()
+            return redirect("InicioEscuela")
+
+    mi_form = FormClase()
+
+    return render(request, "escuela/formCla.html", {"form": mi_form})
 
 def buscar_tema(request, tema):
     if request.GET.get("titulo"):
@@ -12,3 +32,6 @@ def buscar_tema(request, tema):
         return render(request, "escuela/resultado_buscar.html", {"clases":clases})
 
     return render(request, "escuela/buscar.html")
+
+def resultados_esc(request):
+    return render(request, "escuela/resultado_buscar.html")

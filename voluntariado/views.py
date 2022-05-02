@@ -3,7 +3,7 @@ from voluntariado.models import Facilitador, Voluntario
 from .forms import FormFacilitador, FormVoluntario
 
 
-def inicio(request):
+def inicio_voluntariado(request):
     return render(request, "voluntariado/inicio.html")
 
 
@@ -51,5 +51,5 @@ def buscar_voluntario(request, nombre):
 
     return render(request, "voluntariado/buscar.html")
 
-def resultados(request):
+def resultados_vol(request):
     return render(request, "voluntariado/resultado_buscar.html")
