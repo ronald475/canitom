@@ -6,3 +6,6 @@ class Clase(models.Model):
     tema = models.CharField(max_length=40)
     contenido = models.TextField()
     fecha = models.DateField()
+
+    def __str__(self):
+        return f"[{self.tema}] {self.titulo}"

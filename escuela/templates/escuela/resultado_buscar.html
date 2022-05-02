@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+
+
+{% block contenido %}
+    
+{% for clase in clases %}
+        {{clase}} <br/>
+    {% endfor %}
+{% endblock contenido %}
